@@ -20,13 +20,14 @@ def index(request):
 
 def send_request(request):
     key = str(random.randint(0, 9))
-    redis_resource = get_kcc_redis_resource('kStepDebugInfoCache')
+    redis_resource = get_kcc_redis_resource('xStepDebugInfoCache')
     encoded_req = redis_resource.get(key)
 
-    url = 'http://td-dz-c463.yz:9080/realtime_reco'
+    url = 'http://td-dz-c463.yz:29080/realtime_reco'
     data = {'request': encoded_req}
     response = requests.post(url=url, data=data)
     response = response.json()
+    print(response['code'])
     decoded_response = base64.b64decode(response['response'])
 
     realtime_response = RealTimeRecoResponse()
