@@ -37,7 +37,8 @@ def send_request(request):
 
     info_list = list()
     result_list = list()
-
+    print("debug log size", len(realtime_response.reco_debug_log))
+    print("debug log 0", realtime_response.reco_debug_log[0])
     for index, debug_log in enumerate(realtime_response.reco_debug_log):
         info_list.append({'name': debug_log.processor_class_name,
                           'stage': debug_log.stage_flag,
@@ -50,6 +51,6 @@ def send_request(request):
         result_list.append(step_result_list)
 
     info_list_render = render_to_string('process.html', {'info_list': info_list})
-
+    print("info_list", info_list)
     return JsonResponse({'status': 0, 'info_list_render': info_list_render, "result_list": result_list})
 
