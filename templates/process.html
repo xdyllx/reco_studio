@@ -1,0 +1,17 @@
+{% for info in info_list %}
+<div class="card bg-warning">
+    <div class="card-body">
+        <h3 class="card-title text-primary" name="{{ info.index }}"><a href="#">{{ info.name }}</a></h3>
+        <h4 class="card-text">{{ info.stage }}</h4>
+    </div>
+
+</div>
+{% endfor %}
+
+
+<script>
+$('.card-title').click(function () {
+    var index = $(this).attr('name');
+    $('#table').bootstrapTable('load', window['result_list'][parseInt(index)]);
+});
+</script>
