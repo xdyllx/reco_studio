@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from storage import get_kcc_redis_resource
 
-from follow.realtime_reco_pb2 import RealTimeRecoResponse
+from follow.realtime_reco_pb2 import RealTimeRecoRequest, RealTimeRecoResponse
 
 info_list0 = [{'name': 'InitProcessor', 'stage': 'pre', 'index': 0},
              {'name': 'PostProcessor', 'stage': 'post', 'index': 1}]
@@ -23,6 +23,11 @@ def send_request(request):
     redis_resource = get_kcc_redis_resource('xStepDebugInfoCache')
     serialized_req = redis_resource.get(key)
     encoded_req = base64.b64encode(serialized_req)
+    req = RealTimeRecoRequest()
+    req.ParseFromString(serialized_req)
+    user_info = dict()
+    user_info['user_id'] = req.user_id
+    user_info['device_id'] = req.device_id
 
     url = 'http://td-dz-c463.yz:29080/realtime_reco'
     data = {'request': encoded_req}
@@ -52,5 +57,5 @@ def send_request(request):
 
     info_list_render = render_to_string('process.html', {'info_list': info_list})
     print("info_list", info_list)
-    return JsonResponse({'status': 0, 'info_list_render': info_list_render, "result_list": result_list})
+    return JsonResponse({'status': 0, 'user_info': user_info, 'info_list_render': info_list_render, "result_list": result_list})
 

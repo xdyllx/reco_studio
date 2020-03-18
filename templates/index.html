@@ -7,7 +7,7 @@
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
-        <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
     <script>
         $.ajaxSetup({cache: false});
     </script>
@@ -30,18 +30,45 @@
 <body>
 <div class="container-fluid">
     <h2>Reco Studio (demo)</h2>
-
-
 </div>
 
-<button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="send_request_button">
-    添加收购
-</button>
+<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="90%" color=#987cb9 SIZE=3>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="user_id_input">user_id</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-default" disabled>
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="device_id_input">device_id</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-default" disabled>
+            </div>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="send_request_button">
+                随机发送请求
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="90%" color=#987cb9 SIZE=3>
 
 <div class="container">
     <div class="row">
         <!--<div class="col-md-3" style="background-color: #dedef8;box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">-->
-        <div class="col-md-5" id="process_content">
+        <div class="col-md-6" id="process_content">
 
 
         </div>

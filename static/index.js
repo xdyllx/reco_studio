@@ -25,6 +25,8 @@ $('#send_request_button').click(function () {
                $('#process_content').html(ret.info_list_render);
                $('#table').bootstrapTable('load', ret.result_list[ret.result_list.length-1]);
                window['result_list'] = ret.result_list;
+               $('#user_id_input')[0].value = ret.user_info.user_id;
+               $('#device_id_input')[0].value = ret.user_info.device_id;
            } else {
                // todo
                // showToastr('error', 'unknown error');
