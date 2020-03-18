@@ -13,9 +13,6 @@ $('#table').bootstrapTable({
     }, {
         field: 'reason',
         title: 'reason'
-    }, {
-        field: 'score',
-        title: 'score'
     }]
 });
 

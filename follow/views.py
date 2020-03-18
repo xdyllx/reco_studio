@@ -54,8 +54,7 @@ def send_request(request):
         for i in range(length):
             step_result_list.append({'item_id': debug_log.item_id[i],
                                      'item_type': debug_log.item_type[i],
-                                     'reason': debug_log.source_type[i],
-                                     'score': debug_log.score[i]})
+                                     'reason': debug_log.source_type[i]})
         result_list.append(step_result_list)
 
     info_list_render = render_to_string('process.html', {'info_list': info_list})
