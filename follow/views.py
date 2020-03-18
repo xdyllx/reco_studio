@@ -45,14 +45,17 @@ def send_request(request):
     print("debug log size", len(realtime_response.reco_debug_log))
     print("debug log 0", realtime_response.reco_debug_log[0])
     for index, debug_log in enumerate(realtime_response.reco_debug_log):
+        length = len(debug_log.item_id)
         info_list.append({'name': debug_log.processor_class_name,
                           'stage': debug_log.stage_flag,
-                          'index': index})
-        length = len(debug_log.item_id)
+                          'index': index,
+                          'num': length})
         step_result_list = list()
         for i in range(length):
             step_result_list.append({'item_id': debug_log.item_id[i],
-                                     'item_type': debug_log.item_type[i]})
+                                     'item_type': debug_log.item_type[i],
+                                     'reason': debug_log.source_type[i],
+                                     'score': debug_log.score[i]})
         result_list.append(step_result_list)
 
     info_list_render = render_to_string('process.html', {'info_list': info_list})

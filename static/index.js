@@ -10,6 +10,12 @@ $('#table').bootstrapTable({
     }, {
         field: 'item_type',
         title: 'item_type'
+    }, {
+        field: 'reason',
+        title: 'reason'
+    }, {
+        field: 'score',
+        title: 'score'
     }]
 });
 
