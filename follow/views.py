@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from storage import get_kcc_redis_resource
 
+from follow.realtime_base_pb2 import RecoEnum
 from follow.realtime_reco_pb2 import RealTimeRecoRequest, RealTimeRecoResponse
 
 info_list0 = [{'name': 'InitProcessor', 'stage': 'pre', 'index': 0},
@@ -64,7 +65,7 @@ def send_request(request):
     for item in realtime_response.follow_result:
         final_result.append({
             'item_id': item.id,
-            'type': item.type,
+            'type':  RecoEnum.ItemTpye.Value(item.type),
             'reason': item.reason,
         })
     result_list.append(final_result)
