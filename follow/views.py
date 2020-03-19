@@ -27,7 +27,7 @@ def send_request(request):
     req.ParseFromString(serialized_req)
     user_info = dict()
     user_info['user_id'] = req.user_id
-    user_info['device_id'] = req.device_id
+    # user_info['device_id'] = req.device_id
 
     url = 'http://td-dz-c463.yz:29080/realtime_reco'
     data = {'request': encoded_req}
@@ -64,7 +64,7 @@ def send_request(request):
     for item in realtime_response.follow_result:
         final_result.append({
             'item_id': item.id,
-            'type': int(item.type),
+            'type': item.type,
             'reason': item.reason,
         })
     result_list.append(final_result)
