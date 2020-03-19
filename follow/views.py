@@ -56,6 +56,19 @@ def send_request(request):
                                      'item_type': debug_log.item_type[i],
                                      'reason': debug_log.source_type[i]})
         result_list.append(step_result_list)
+    info_list.append({'name': "final response",
+                      'stage': 'final',
+                      'index': len(realtime_response.reco_debug_log),
+                      'num': len(realtime_response.follow_result)})
+    final_result = list()
+    for item in realtime_response.follow_result:
+        final_result.append({
+            'item_id': item.id,
+            'type': int(item.type),
+            'reason': item.reason,
+        })
+    result_list.append(final_result)
+
 
     info_list_render = render_to_string('process.html', {'info_list': info_list})
     print("info_list", info_list)
